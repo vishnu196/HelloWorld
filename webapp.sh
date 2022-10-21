@@ -99,6 +99,7 @@ systemctl enable tomcat &>>$LOG
 systemctl restart tomcat &>>$LOG 
 STAT_CHECK $? 
 Print "Load Schema\t\t"
+yum install mariadb -y &>>$LOG 
 curl -s https://s3-us-west-2.amazonaws.com/studentapi-cit/studentapp-ui-proj1.sql  -o /tmp/schema.sql 
 mysql -h $3 -u$1 -p$2 </tmp/schema.sql 
 STAT_CHECK $?
